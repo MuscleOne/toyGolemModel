@@ -25,7 +25,7 @@ golem::fill_desc(
   author_first_name = "Tianhao", # Your First Name
   author_last_name = "Chen", # Your Last Name
   author_email = "chentianhao@hrbeu.edu.cn", # Your Email
-  repo_url = NULL # The URL of the GitHub Repo (optional)
+  repo_url = "https://github.com/MuscleOne/toyGolemModel.git" # The URL of the GitHub Repo (optional)
 )
 
 ## Set {golem} options ----
