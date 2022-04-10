@@ -17,26 +17,60 @@
 ## Amend DESCRIPTION with dependencies read from package code parsing
 attachment::att_amend_desc()
 
+usethis::use_dev_package("reactable")
+usethis::use_package("shinythemes")
+usethis::use_package("shinyjs")
+usethis::use_package("rintrojs")
+usethis::use_package("vroom")
+usethis::use_package("htmltools")
+
 ## Add modules ----
 ## Create a module infrastructure in R/
-golem::add_module(name = "name_of_module1", with_test = TRUE) # Name of the module
-golem::add_module(name = "name_of_module2", with_test = TRUE) # Name of the module
+
+### modules of expression query
+golem::add_module(name = "query_exprs", with_test = TRUE)
+golem::add_module(name = "query_exprs_select_studies", with_test = TRUE)
+golem::add_module(name = "query_exprs_select_cohorts", with_test = TRUE)
+
+### module of concentration query
+golem::add_module(name = "query_con", with_test = T)
+#### three sub server function in this tab (concentration query)
+golem::add_fct("query_con_creatinine_server", with_test = TRUE)
+golem::add_fct("query_con_abs_server", with_test = TRUE)
+golem::add_fct("query_con_related_server", with_test = TRUE)
+
+### modules of body weight query
+golem::add_module(name = "query_weight_cohorts", with_test = T)
+golem::add_module(name = "query_weight_idx", with_test = T)
+
+### modules of displaying the results
+golem::add_module(name = "display_table", with_test = T)
+
+### modules of downloading the results
+golem::add_module(name = "download", with_test = T)
 
 ## Add helper functions ----
 ## Creates fct_* and utils_*
-golem::add_fct("helpers", with_test = TRUE)
+
+## fct function, which is used in some topic.
+golem::add_fct("display_sample", with_test = TRUE)
+golem::add_fct("remove_sub", with_test = T)
+
+## utils function, which is widely used in the whole app.
 golem::add_utils("helpers", with_test = TRUE)
+golem::add_utils("lp_main_box", with_test = T)
 
 ## External resources
 ## Creates .js and .css files at inst/app/www
-golem::add_js_file("script")
-golem::add_js_handler("handlers")
-golem::add_css_file("custom")
-golem::add_sass_file("custom")
+# golem::add_js_file("script")
+# golem::add_js_handler("handlers")
+golem::add_css_file("style")
+# golem::add_sass_file("custom")
 
 ## Add internal datasets ----
 ## If you have data in your package
 usethis::use_data_raw(name = "my_dataset", open = FALSE)
+usethis::use_data_raw(name = "my_dataset_1", open = FALSE)
 
 ## Tests ----
 ## Add one line by test you want to create
